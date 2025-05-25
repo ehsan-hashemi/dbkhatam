@@ -1,2 +1,0 @@
-# dbkhatam
-dbkhatam.ir
