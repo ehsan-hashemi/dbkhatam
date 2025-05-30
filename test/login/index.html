@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ورود به حساب کاربری مدرسه</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <div class="login-container">
+        <h1>ورود به حساب کاربری</h1>
+        <form id="loginForm">
+            <label for="firstNameLastName">نام و نام خانوادگی:</label>
+            <input type="text" id="firstNameLastName" placeholder="محمد عباسی" name="firstNameLastName" required>
+            
+            <label for="birthDate">تاریخ تولد:</label>
+            <input type="text" id="birthDate" name="birthDate" placeholder="1390/05/10" required>
+            
+            <label for="nationalCode">کد ملی:</label>
+            <input type="text" id="nationalCode" placeholder="0370000000" name="nationalCode" required>
+            
+            <label for="password">رمز عبور:</label>
+            <input type="password" id="password" placeholder="password" name="password" required>
+            
+            <button type="submit">ورود</button>
+        </form>
+        <div id="errorMessage" class="error"></div>
+    </div>
+    <script src="app.js"></script>
+    <ul>
+        <li><a href="/test/dashbord/student/">داشبورد دانش آموز</a></li>
+        <li><a href="/test/dashbord/teacher/">داشبورد معلم</a></li>
+        <li><a href="/test/admin/">داشبورد مدیر</a></li>
+    </ul>
+</body>
+</html>
