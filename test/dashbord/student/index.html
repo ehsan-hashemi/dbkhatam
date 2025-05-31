@@ -180,7 +180,7 @@
         th {
             height: 50px;
         }
-        
+
         /* فقط در موبایل دکمه منو نمایش داده شود */
         @media (max-width: 768px) {
             #burger {
@@ -224,7 +224,7 @@
 
 
     <div id="content">
-        <h2>دانش آموز عزیز "سید محمد احسان هاشمی" خوش آمدید.</h2>
+        <h2>دانش آموز عزیز "<span id="username"></span>" خوش آمدید.</h2>
         <p>از منوی سمت چپ گزینه موردنظر را انتخاب کنید.</p>
         <ul>
             <li>وضعیت تکالیف: <span id="mashqe"></span></li>
@@ -233,6 +233,16 @@
             <li>تاریخ: <span id="datetime"></span></li>
         </ul>
     </div>
+    <script src="../../login/app.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            let username = localStorage.getItem("username"); // دریافت نام از localStorage
+            if (username) {
+                document.getElementById("username").textContent = username;
+            }
+        });
+
+    </script>
     <script>
         function updateMessage() {
           const now = "hi";

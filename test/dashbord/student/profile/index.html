@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>داشبورد دانش‌آموز</title>
+    <style>
+        @font-face {
+            font-family: "Vazir";
+            src: url("/Vazir-Regular.ttf");
+        }
+        body {
+            font-family: "Vazir";
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        #navbar {
+            background-color: #007BFF;
+            color: white;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        #navbar h1 {
+            margin: 0;
+            font-size: 24px;
+        }
+
+        #navbar2 {
+            background-color: #007BFF;
+            color: white;
+            padding: 5px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        #sidebar {
+            width: 250px;
+            height: 100vh;
+            background-color: #f8f9fa;
+            position: fixed;
+            top: 0;
+            left: 0;
+            padding: 20px;
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+        }
+
+        #sidebar ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        #sidebar ul li {
+            margin: 10px 0;
+        }
+
+        #sidebar ul li a {
+            text-decoration: none;
+            color: #333;
+            display: block;
+            padding: 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        #sidebar ul li a:hover {
+            background-color: #007BFF;
+            color: white;
+        }
+
+        #content {
+            margin-left: 270px;
+            padding: 20px;
+        }
+
+        body {
+            margin: 0;
+            font-family: "Vazir";
+        }
+
+        .navbar {
+            overflow: hidden;
+            background-color: #ffffff;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+
+        .navbar a {
+        float: right;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+        font-size: 17px;
+        }
+
+        .navbar a:hover {
+        background: #007BFF;
+        color: #ffffff;
+        }
+
+        .navbar a.active {
+        background-color: #007BFF;
+        color: #ffffff;
+        }
+
+        .navbar a.active:hover {
+        background: hsl(0, 0%, 100%);
+        color: #000000;
+        }
+
+        .main {
+            padding: 16px;
+            margin-bottom: 30px;
+            direction: rtl;
+        }
+        
+        #sidebar ul li a.action {
+            background-color: #007BFF;
+            color: #ffffff;
+        }
+
+        .dele:hover {
+            background-color: red !important;
+            color: #ffffff;
+        }
+
+        /* تنظیم دکمه منو */
+        #burger {
+            position: fixed;
+            top: 10px;
+            left: 10px;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            display: none; /* در دسکتاپ پنهان باشد */
+            z-index: 9999; /* بالاترین مقدار تا همیشه نمایش داده شود */
+        }
+
+        /* تنظیم تصویر آیکون */
+        #burger img {
+            width: 40px;
+            height: 40px;
+        }
+
+        /* تنظیم منو */
+        #sidebar {
+            position: fixed;
+            top: 0;
+            width: 250px;
+            height: 100%;
+            transition: left 0.3s ease-in-out;
+            z-index: 1000;
+            transition: left 0.3s ease-in-out;
+        }
+
+        /* نمایش منو هنگام کلیک */
+        #sidebar.active {
+            left: 0;
+        }
+
+        table{
+            border: 1px solid black;
+            border-collapse: collapse;
+            width: 65%;
+            font-family: "Vazir";
+            margin: 20px;
+        }
+
+        table , th , td{
+            border: 3px solid black;
+            text-align: center;
+        }
+
+        th {
+            height: 50px;
+        }
+        
+        #content {
+            margin-left: 270px;
+            padding: 20px;
+            font-family: "Vazir";
+        }
+
+        #profile-name, #profile-teacher, #profile-grade, #profile-class, #profile-birthdate, #profile-nationalcode {
+            font-size: 18px;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        #profile-img {
+            display: block;
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            margin: 20px;
+            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+            text-align: right;
+        }
+
+        /* فقط در موبایل دکمه منو نمایش داده شود */
+        @media (max-width: 768px) {
+            #burger {
+                display: block;
+            }
+            #sidebar {
+                display: none;
+                padding: 20px;
+            }
+            #sidebar.active {
+                display: block;
+            }
+            #sidebar ul {
+                padding-top: 2px;
+            }
+            #content {
+                margin-left: 0; /* حذف فاصله بین content و sidebar */
+                width: 100%; /* محتوای صفحه به‌طور کامل نمایش داده شود */
+            }
+            table {
+                width: 90%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="navbar">
+        <h1>پروفایل</h1>
+    </div>
+
+    <button id="burger"><img src="/images/menu_24dp_1F1F1F_FILL0_wght400_GRAD0_opsz24.svg" alt="menu"></button>
+    <div id="sidebar">
+        <ul>
+            <li><a href="/test/dashbord/student/">خانه</a></li>
+            <li><a class="action" href="/test/dashbord/student/profile/">پروفایل</a></li>
+            <li><a href="/test/dashbord/student/schedule">برنامه کلاسی</a></li>
+            <li><a href="/test/dashbord/student/grades">کارنامه</a></li>
+            <li><a href="/test/dashbord/student/assignments">تکالیف</a></li>
+            <li><a href="/test/dashbord/student/messages">پیام‌ها</a></li>
+            <li><a href="/test/dashbord/student/tuition">شهریه</a></li>
+            <li><a class="dele" href="/test/login/">خروج</a></li>
+        </ul>
+    </div>
+
+    <img id="profile-img" src="/images/person_24dp_1F1F1F_FILL0_wght400_GRAD0_opsz24.svg" alt="پروفایل">
+    <div id="content">
+        <h2>اطلاعات پروفایل</h2>
+        <p id="profile-name">نام دانش‌آموز</p>
+        <p id="profile-birthdate">تاریخ تولد</p>
+        <p id="profile-nationalcode">کد ملی</p>
+        <p id="profile-grade">پایه تحصیلی</p>
+        <p id="profile-teacher">نام معلم</p>
+        <p id="profile-class">نام کلاس</p>
+    </div>
+
+<script>
+    document.getElementById("burger").addEventListener("click", function () {
+        let sidebar = document.getElementById("sidebar");
+        sidebar.classList.toggle("active");
+    });
+</script>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        let username = localStorage.getItem("username") || "نام وارد نشده";
+        let teacher = localStorage.getItem("teacher") || "نام معلم وارد نشده";
+        let grade = localStorage.getItem("grade") || "پایه وارد نشده";
+        let className = localStorage.getItem("className") || "کلاس وارد نشده";
+        let birthDate = localStorage.getItem("birthDate") || "تاریخ تولد وارد نشده";
+        let nationalCode = localStorage.getItem("nationalCode") || "کد ملی وارد نشده";
+
+        document.getElementById("profile-name").textContent = "نام و نام خانوادگی: " + username;
+        document.getElementById("profile-teacher").textContent = "نام معلم: " + teacher;
+        document.getElementById("profile-grade").textContent = "پایه تحصیلی: " + grade;
+        document.getElementById("profile-class").textContent = "کلاس: " + className;
+        document.getElementById("profile-birthdate").textContent = "تاریخ تولد: " + birthDate;
+        document.getElementById("profile-nationalcode").textContent = "کد ملی: " + nationalCode;
+    });
+</script>
+</body>
+</html>
