@@ -129,6 +129,61 @@
             background-color: red !important;
             color: #ffffff;
         }
+
+        /* تنظیم دکمه منو */
+        #burger {
+            position: fixed;
+            top: 10px;
+            left: 10px;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            display: none; /* در دسکتاپ پنهان باشد */
+            z-index: 9999; /* بالاترین مقدار تا همیشه نمایش داده شود */
+        }
+
+        /* تنظیم تصویر آیکون */
+        #burger img {
+            width: 40px;
+            height: 40px;
+        }
+
+        /* تنظیم منو */
+        #sidebar {
+            position: fixed;
+            top: 0;
+            width: 250px;
+            height: 100%;
+            transition: left 0.3s ease-in-out;
+            z-index: 1000;
+            transition: left 0.3s ease-in-out;
+        }
+
+        /* نمایش منو هنگام کلیک */
+        #sidebar.active {
+            left: 0;
+        }
+
+        /* فقط در موبایل دکمه منو نمایش داده شود */
+        @media (max-width: 768px) {
+            #burger {
+                display: block;
+            }
+            #sidebar {
+                display: none;
+                padding: 20px;
+            }
+            #sidebar.active {
+                display: block;
+            }
+            #sidebar ul {
+                padding-top: 2px;
+            }
+            #content {
+                margin-left: 0; /* حذف فاصله بین content و sidebar */
+                width: 100%; /* محتوای صفحه به‌طور کامل نمایش داده شود */
+            }
+        }
     </style>
 </head>
 <body>
@@ -136,6 +191,7 @@
         <h1>داشبورد دانش آموز</h1>
     </div>
 
+    <button id="burger"><img src="/images/menu_24dp_1F1F1F_FILL0_wght400_GRAD0_opsz24.svg" alt="menu"></button>
     <div id="sidebar">
         <ul>
             <li><a class="action" href="/test/admin/">خانه</a></li>
@@ -216,5 +272,11 @@
         setInterval(updateDateTime, 1000); // اجرای تابع هر یک ثانیه
         updateDateTime(); // نمایش مقدار اولیه
       </script>
+    <script>
+        document.getElementById("burger").addEventListener("click", function () {
+            let sidebar = document.getElementById("sidebar");
+            sidebar.classList.toggle("active");
+        });
+    </script>
 </body>
 </html>
