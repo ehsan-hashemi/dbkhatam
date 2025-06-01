@@ -236,13 +236,13 @@
     <button id="burger"><img src="/images/menu_24dp_1F1F1F_FILL0_wght400_GRAD0_opsz24.svg" alt="menu"></button>
     <div id="sidebar">
         <ul>
-            <li><a href="/test/dashbord/student/">خانه</a></li>
-            <li><a class="action" href="/test/dashbord/student/profile/">پروفایل</a></li>
-            <li><a href="/test/dashbord/student/schedule">برنامه کلاسی</a></li>
-            <li><a href="/test/dashbord/student/grades">کارنامه</a></li>
-            <li><a href="/test/dashbord/student/assignments">تکالیف</a></li>
-            <li><a href="/test/dashbord/student/messages">پیام‌ها</a></li>
-            <li><a href="/test/dashbord/student/tuition">شهریه</a></li>
+            <li><a href="/test/admin/">خانه</a></li>
+            <li><a class="action" href="/test/admin/profile">پروفایل</a></li>
+            <li><a href="/test/admin/sss">مدیریت دانش‌آموزان</a></li>
+            <li><a href="/test/admin/teas">مدیریت معلمان</a></li>
+            <li><a href="/test/admin/shahrie">شهریه‌ها</a></li>
+            <li><a href="/test/admin/messages">پیام‌ها</a></li>
+            <li><a href="/test/admin/news">مدیریت اخبار</a></li>
             <li><a class="dele" href="/test/login/">خروج</a></li>
         </ul>
     </div>
@@ -250,15 +250,12 @@
     <img id="profile-img" src="/images/person_24dp_1F1F1F_FILL0_wght400_GRAD0_opsz24.svg" alt="پروفایل">
     <div id="content">
         <h2>اطلاعات پروفایل</h2>
-        <p id="profile-name">نام دانش‌آموز</p>
+        <p id="profile-name">نام مدیر</p>
         <p id="profile-birthdate">تاریخ تولد</p>
         <p id="profile-nationalcode">کد ملی</p>
-        <p id="profile-grade">پایه تحصیلی</p>
-        <p id="profile-teacher">نام معلم</p>
-        <p id="profile-class">نام کلاس</p>
+        <p id="profile-class">سمت</p>
     </div>
 
-<script src="../../../login/app.js"></script>
 <script>
     document.getElementById("burger").addEventListener("click", function () {
         let sidebar = document.getElementById("sidebar");
@@ -268,16 +265,12 @@
 <script>
     document.addEventListener("DOMContentLoaded", function() {
         let username = localStorage.getItem("username") || "نام وارد نشده";
-        let teacher = localStorage.getItem("teacher") || "نام معلم وارد نشده";
-        let grade = localStorage.getItem("grade") || "پایه وارد نشده";
         let className = localStorage.getItem("className") || "کلاس وارد نشده";
         let birthDate = localStorage.getItem("birthDate") || "تاریخ تولد وارد نشده";
         let nationalCode = localStorage.getItem("nationalCode") || "کد ملی وارد نشده";
 
         document.getElementById("profile-name").textContent = "نام و نام خانوادگی: " + username;
-        document.getElementById("profile-teacher").textContent = "نام معلم: " + teacher;
-        document.getElementById("profile-grade").textContent = "پایه تحصیلی: " + grade;
-        document.getElementById("profile-class").textContent = "کلاس: " + className;
+        document.getElementById("profile-class").textContent = "سمت: " + className;
         document.getElementById("profile-birthdate").textContent = "تاریخ تولد: " + birthDate;
         document.getElementById("profile-nationalcode").textContent = "کد ملی: " + nationalCode;
     });

@@ -206,7 +206,7 @@
     </div>
 
     <div id="content">
-        <h2>مدیر محترم "آقای ملاعلی" خوش آمدید.</h2>
+        <h2>مدیر محترم "<span id="username"></span>" خوش آمدید.</h2>
         <p>از منوی سمت چپ گزینه موردنظر را انتخاب کنید.</p>
         <ul>
             <li>تعداد دانش آموزان: <span id="mashqe"></span> نفر</li>
@@ -217,6 +217,15 @@
             <li>تاریخ: <span id="datetime"></span></li>
         </ul>
     </div>
+    <script src="../login/app.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            let username = localStorage.getItem("username"); // دریافت نام از localStorage
+            if (username) {
+                document.getElementById("username").textContent = username;
+            }
+        });
+    </script>
     <script>
         function updateMessage() {
           const now = "hi";
@@ -247,7 +256,7 @@
     <script>
         function updateMessage() {
           const now = "hi";
-          document.getElementById("mecar").textContent = "7";
+          document.getElementById("mecar").textContent = "0";
         }
 
         updateMessage();
