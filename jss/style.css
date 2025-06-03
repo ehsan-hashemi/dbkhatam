@@ -1,0 +1,70 @@
+/* استایل های سفارشی شما */
+    body {
+      font-family: sans-serif;
+      padding: 20px;
+      background-color: #f4f4f4;
+    }
+
+    pre[class*="language-"] {
+      position: relative; /* برای جای‌گذاری صحیح Toolbar */
+      background-color: #2d2d2d; /* مثال از یک تم تیره */
+      border-radius: 8px;
+      margin-bottom: 25px;
+      box-shadow: 0 4px 10px #ffffff;
+      /* سایر استایل های قبلی شما برای pre */
+    }
+
+    /* استایل های بیشتر برای Toolbar و دکمه کپی (اختیاری) */
+    div.code-toolbar {
+      margin-bottom: 0; /* برای چسبیدن به بالای pre */
+    }
+
+    pre[class*="language-"] .toolbar {
+      position: absolute;
+      top: 0.5em;     /* کمی فاصله از بالا */
+      right: 0.5em;   /* در سمت راست */
+      z-index: 10;    /* برای اطمینان از روی سایر عناصر بودن */
+      display: flex;
+      gap: 0.5em; /* فاصله بین دکمه ها اگر چند دکمه داشتید */
+    }
+
+    pre[class*="language-"] .toolbar .toolbar-item button,
+    pre[class*="language-"] .toolbar .toolbar-item span {
+      background: #555;
+      color: #fff;
+      border: none;
+      padding: 0.3em 0.8em;
+      border-radius: 0.3em;
+      font-size: 0.85em;
+      cursor: pointer;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+      transition: background-color 0.2s ease;
+    }
+
+    pre[class*="language-"] .toolbar .toolbar-item button:hover {
+      background-color: #777;
+    }
+
+    /* استایل برای نام زبان */
+    pre[class*="language-"]::before {
+      content: attr(data-lang); /* خواندن نام زبان از data-lang */
+      display: block;
+      background-color: #555; /* رنگ پس زمینه مشابه دکمه */
+      color: #fff;
+      font-size: 0.85em;
+      padding: 0.4em 1em;
+      border-top-left-radius: 8px; /* گرد کردن گوشه بالا چپ (اگر pre هم گرد است) */
+      border-top-right-radius: 8px; /* گرد کردن گوشه بالا راست */
+      text-transform: uppercase; /* حروف بزرگ */
+      text-align: left;
+      margin-bottom: -1px; /* برای اینکه با border خود pre همپوشانی نکند اگر border دارد */
+      position: relative;
+      z-index: 1; /* پایین تر از toolbar */
+      font-weight: bold;
+    }
+
+    /* تنظیم دقیق تر برای pre تا با ::before تداخل نکند */
+    pre[class*="language-"] > code {
+      border-top-left-radius: 0;
+      border-top-right-radius: 0;
+    }

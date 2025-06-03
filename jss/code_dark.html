@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>کد با Prism.js - تم مشکی</title>
+
+    <!-- Prism.js - تم مشکی -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/line-numbers/prism-line-numbers.css" rel="stylesheet">
+
+    <style>
+        @font-face {
+            font-family: "Vazir";
+            src: url(/Vazir-Regular.ttf);
+        }
+        body {
+            font-family: "Vazir";
+            color: #ccc;
+            font-family: Arial, sans-serif;
+        }
+        h1 {
+            color: black;
+            font-family: "Vazir";
+            text-align: center;
+            direction: rtl;
+        }
+        h2 {
+            color: black;
+            font-family: "Vazir";
+            direction: rtl;
+        }
+        p {
+            color: black;
+            font-family: "Vazir";
+            direction: rtl;
+        }
+        .code-container {
+            position: relative;
+            background: #282c34;
+            padding: 10px;
+            border-radius: 5px;
+            font-family: monospace;
+            color: #abb2bf;
+            overflow: auto;
+        }
+        .code-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 5px 10px;
+            background: #3f4653;
+            color: #ffffff;
+            border-radius: 5px 5px 0 0;
+        }
+        .copy-btn {
+            cursor: pointer;
+            background: none;
+            border: none;
+            padding: 5px;
+        }
+        .copy-btn img {
+            width: 20px;
+            height: 20px;
+            filter: invert(1); /* آیکون سفید */
+        }
+        .line-numbers .line-numbers-rows {
+            user-select: none;
+        }
+        pre {
+            white-space: pre-line;
+        }
+        /* استایل اسکرول برای تم مشکی */
+        .code-container::-webkit-scrollbar {
+            height: 8px;
+        }
+        .code-container::-webkit-scrollbar-track {
+            background: #444;
+            border-radius: 4px;
+        }
+        .code-container::-webkit-scrollbar-thumb {
+            background: #888;
+            border-radius: 4px;
+        }
+        .copyright {
+            background: #111;
+            color: #fff;
+            text-align: center;
+            padding: 15px;
+            font-size: 14px;
+            font-family: Arial, sans-serif;
+            border-top: 2px solid #444;
+        }
+        footer {
+    background-color: #000000;
+    color: white;
+    text-align: center;
+    padding: 0;
+}
+
+.cpsf {
+    color: #000000;
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    direction: rtl;
+    text-align: right;
+}
+
+.pte1 {
+    direction: ltr;
+}
+
+.dpaf {
+    direction: ltr;
+    text-align: center;
+}
+
+.qopa {
+    color: white;
+}
+
+/* کانتینر اصلی فوتر */
+.footer-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    background-color: #333;
+    color: #fff;
+    padding: 0;
+  }
+  
+  .footer-section {
+    flex: 1 1 30%; /* تنظیم اندازه بخش‌ها */
+    margin: 0;
+  }
+  
+  .footer-section h3 {
+    border-bottom: 2px solid orangered; /* خط زیر عنوان‌ها */
+    padding-bottom: 5px;
+  }
+  
+  .footer-section ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .footer-section ul li {
+    margin: 5px 0;
+  }
+  
+  .footer-section ul li a {
+    color: orangered; /* رنگ لینک‌ها */
+    text-decoration: none;
+  }
+  
+  .footer-section ul li a:hover {
+    text-decoration: underline;
+  }
+  
+  .dfsgg {
+    direction: rtl;
+    color: white;
+    text-decoration: none;
+  }
+
+  .social-media a img {
+    width: 32px;
+    height: 32px;
+    margin: 0 5px;
+  }
+
+.social-icons {
+    margin-top: 10px;
+    gap: 15px;
+    direction: ltr;
+}
+
+.social-icons a img {
+    width: 70px;
+    height: 40px;
+    direction: ltr;
+    text-align: left;
+}
+
+.footer-content {
+    background-color: #ffffff;
+}
+
+    </style>
+</head>
+<body>
+
+<h1>چطور نام کاربر را در پروفایل به او نشان دهیم؟</h1>
+<p>سلام! در این قسمت از مجله گروه برنامه نویسی احسان، می‌خواهیم آموزش دهیم که چطور نام کاربر را در پروفایل به او نشان دهیم. یعنی وقتی کاربر وارد حساب کاربری خود می‌شود،‌ در پروفایل به او خوش آمد گویی کنیم. البته این روش به درد کار های دیگر هم می‌خورد. مثلا می‌خواهم به جای اینکه کلی در سایت دنبال این بگردیم که قیمت این محصول یا این متن رو چی گذاشتیم، میتوانیم آن را در یک متغیر جاوا اسکریپت در فایلی ذخیره کنیم تا دفعه‌ی بعد به راحتی او را ویرایش دهیم.</p>
+
+<h2>کد HTML</h2>
+<p>ابتدا یک فایل html ایجاد می‌کنیم و این کد را در فایل ذخیره می‌کنیم.</p>
+<div class="code-container">
+    <div class="code-header">
+        <span>Html</span>
+        <button class="copy-btn">
+            <img src="./content_copy_24dp_000000_FILL0_wght400_GRAD0_opsz24.png" alt="کپی">
+        </button>
+    </div>
+    <pre class="line-numbers"><code class="language-html">&lt;h1&gt;پروفایل&lt;/h1&gt;
+&lt;p&gt;کاربر گرامی &lt;span id="username"&gt;&lt;/span&gt; خوش آمدید.&lt;/p&gt;
+</code></pre>
+</div>
+
+<p>در این کد داخل تگ p یا هر تگ دیگری که می‌خواهید در آن به کاربر خوش آمد بگویید، یک تگ span بگذارید و داخل آن هیچ چیزی نگذارید. فقط یک id برای او بذارید و داخلش username بگذارید برای ارتباط با ‌جاوا اسکریپت.</p>
+
+<h2>کد Java Script</h2>
+<p>سپس این کد جاوا اسکریپت را در پروژه می‌گذاریم:</p>
+
+<div class="code-container">
+    <div class="code-header">
+        <span>Java Script</span>
+        <button class="copy-btn">
+            <img src="./content_copy_24dp_000000_FILL0_wght400_GRAD0_opsz24.png" alt="کپی">
+        </button>
+    </div>
+    <pre class="line-numbers"><code class="language-javascript">function updateMessage() {
+    const now = "hi";
+    document.getElementById("username").textContent = "احسان هاشمی";
+}
+
+updateMessage();
+</code></pre>
+</div>
+
+<p>حالا برای تغییر نام کاربر یا متنی که می‌خواهید تغییر دهید، باید به جای "" در عنصر username متنی که می‌خوهید را وارد کنید.</p>
+
+<h2>خروجی</h2>
+<p>خروجی این کد با کمی css به صورت زیر است:</p>
+
+<h1 style="text-align: center; color: blue; font-size: x-large;">پروفایل</h1>
+<p style="text-align: center; color: red; font-size: small;">کاربر گرامی <span id="username"></span> خوش امدید.</p>
+
+<script>
+    function updateMessage() {
+        const now = "hi";
+        document.getElementById("username").textContent = "احسان هاشمی";
+    }
+
+    updateMessage();
+</script>
+
+<p>امیدوارم روزی این آموزش به کارتان بیاید. ما را دنبال کنید و از دیگر مطالب بهره مند شوید.</p>
+
+<br>
+
+<div class="footer-content">
+    <p class="pte1">© 2025. Ehsan Blog. All rights are reserved.</p>
+    <div class="social-icons">
+        <a href="https://ehsan-hashemi.github.io/M-Programming-Group" target="_blank"><img src="https://ehsan-hashemi.ir/icon.png" alt="icon"></a>
+    </div>
+
+<script>
+    document.querySelector('.copy-btn').addEventListener('click', function() {
+        let codeText = document.querySelector('code.language-html').textContent;
+        navigator.clipboard.writeText(codeText).then(() => {
+            alert('✅ کد با موفقیت کپی شد!');
+        }).catch(err => {
+            console.error('❌ خطا در کپی کردن:', err);
+        });
+    });
+</script>
+
+<!-- Prism.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/line-numbers/prism-line-numbers.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
+
+</body>
+</html>
