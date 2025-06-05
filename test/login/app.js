@@ -24,7 +24,7 @@ document.getElementById("loginForm").addEventListener("submit", function(event) 
             name: "حسن ملاعلی",
             birth: "0000/00/01",
             code: "0000000000",
-            pass: "0000000000",
+            pass: "75438",
             grade: "ششم",
             className: "دانش پژوهان ۲",
             url: "../dashbord/teacher/"
@@ -35,7 +35,7 @@ document.getElementById("loginForm").addEventListener("submit", function(event) 
             name: "حسن ملاعلی",
             birth: "0000/00/00",
             code: "0000000000",
-            pass: "0000000000",
+            pass: "75438",
             className: "مدیر مدرسه",
             url: "../admin"
         },

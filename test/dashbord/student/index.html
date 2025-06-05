@@ -194,12 +194,14 @@
                 display: block;
             }
             #sidebar ul {
-                padding-top: 2px;
+                padding-top: 15px;
             }
             #content {
-                margin-left: 0; /* حذف فاصله بین content و sidebar */
                 width: 100%; /* محتوای صفحه به‌طور کامل نمایش داده شود */
                 padding: 0px;
+            }
+            .epaddeing {
+                padding-right: 10px;
             }
         }
     </style>
@@ -225,13 +227,13 @@
 
 
     <div id="content">
-        <h2>دانش آموز عزیز "<span id="username"></span>" خوش آمدید.</h2>
-        <p>از منوی سمت چپ گزینه موردنظر را انتخاب کنید.</p>
+        <h2 class="epaddeing">دانش آموز عزیز "<span id="username"></span>" خوش آمدید.</h2>
+        <p class="epaddeing">از منوی سمت چپ گزینه موردنظر را انتخاب کنید.</p>
         <ul>
-            <li>وضعیت تکالیف: <span id="mashqe"></span></li>
-            <li>پیام جدید: <span id="mesagesee"></span> پیام</li>
-            <li>وضعیت کارنامه: <span id="mecar"></span></li>
-            <li>تاریخ: <span id="datetime"></span></li>
+            <li class="epaddeing">وضعیت تکالیف: <span id="mashqe"></span></li>
+            <li class="epaddeing">پیام جدید: <span id="mesagesee"></span> پیام</li>
+            <li class="epaddeing">وضعیت کارنامه: <span id="mecar"></span></li>
+            <li class="epaddeing">تاریخ: <span id="datetime"></span></li>
         </ul>
     </div>
     <script src="../../login/app.js"></script>
