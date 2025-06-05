@@ -19,6 +19,14 @@ document.getElementById("loginForm").addEventListener("submit", function(event) 
             url: "../dashbord/student/"
         },
 
+        { 
+            name: "حسن ملاعلی",
+            birth: "0000/00/02",
+            code: "0000000000",
+            pass: "75438",
+            url: "../dashbord/student/"
+        },
+
         // معلمان
         { 
             name: "حسن ملاعلی",
