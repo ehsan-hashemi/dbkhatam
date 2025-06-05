@@ -58,6 +58,7 @@ document.getElementById("loginForm").addEventListener("submit", function(event) 
         localStorage.setItem("className", user.className);
         localStorage.setItem("birthDate", user.birth);
         localStorage.setItem("nationalCode", user.code);
+        localStorage.setItem("pass", user.pass);
         localStorage.setItem("profilePic", user.profilePic);
         window.location.href = user.url;
     } else {
