@@ -257,6 +257,7 @@
         <p class="epaddeing" id="profile-name">نام مدیر</p>
         <p class="epaddeing" id="profile-birthdate">تاریخ تولد</p>
         <p class="epaddeing" id="profile-nationalcode">کد ملی</p>
+        <p class="epaddeing" id="profile-password">رمز عبور</p>
         <p class="epaddeing" id="profile-class">سمت</p>
     </div>
 
@@ -272,11 +273,13 @@
         let className = localStorage.getItem("className") || "کلاس وارد نشده";
         let birthDate = localStorage.getItem("birthDate") || "تاریخ تولد وارد نشده";
         let nationalCode = localStorage.getItem("nationalCode") || "کد ملی وارد نشده";
+        let pass = localStorage.getItem("pass") || "رمز عبور وارد نشده";
 
         document.getElementById("profile-name").textContent = "نام و نام خانوادگی: " + username;
         document.getElementById("profile-class").textContent = "سمت: " + className;
         document.getElementById("profile-birthdate").textContent = "تاریخ تولد: " + birthDate;
         document.getElementById("profile-nationalcode").textContent = "کد ملی: " + nationalCode;
+        document.getElementById("profile-password").textContent = "رمز عبور: " + pass;
     });
 </script>
 </body>
