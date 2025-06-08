@@ -244,8 +244,8 @@
        </tr>
        <tr>
             <th>شنبه</td>
-            <td>تست</td>
-            <td>تست</td>
+            <td><p id="sth11s"></p></td>
+            <td id="sth12">تست</td>
             <td>تست</td>
             <td>تست</td>
             <td>تست</td>
@@ -283,10 +283,19 @@
             <td>تست</td>
       </tr>
 </table>
+
+<script src="../../../login/app.js"></script>
 <script>
     document.getElementById("burger").addEventListener("click", function () {
         let sidebar = document.getElementById("sidebar");
         sidebar.classList.toggle("active");
+    });
+</script>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        let sth11 = localStorage.getItem("sth11s") || "تست";
+
+        document.getElementById("sth11").textContent = sth11s
     });
 </script>
 </body>

@@ -16,6 +16,31 @@ document.getElementById("loginForm").addEventListener("submit", function(event) 
             teacher: "آقای رسولی",
             grade: "ششم",
             className: "دانش پژوهان ۲",
+            sth11: "ریاضی",
+            sth12: "فارسی",
+            sth13: "فارسی",
+            sth14: "قرآن",
+            sth15: "ورزش",
+            sth21: "ریاضی",
+            sth22: "فارسی",
+            sth23: "علوم",
+            sth24: "مطالعات اجتماعی",
+            sth25: "هنر",
+            sth31: "کار و فناوری",
+            sth32: "فارسی + نگارش",
+            sth33: "تفکر و پژوهش",
+            sth34: "مطالعات اجتماعی",
+            sth35: "قرآن",
+            sth41: "ریاضی",
+            sth42: "هدیه های آسمان",
+            sth43: "مطالعات اجتماعی",
+            sth44: "ورزش",
+            sth45: "هنر",
+            sth51: "ریاضی",
+            sth52: "علوم",
+            sth53: "املا + نگارش",
+            sth54: "هنر",
+            sth55: "قرآن",
             url: "../dashbord/student/"
         },
 
@@ -59,6 +84,31 @@ document.getElementById("loginForm").addEventListener("submit", function(event) 
         localStorage.setItem("birthDate", user.birth);
         localStorage.setItem("nationalCode", user.code);
         localStorage.setItem("pass", user.pass);
+        localStorage.setItem("sth11s", user.sth11);
+        localStorage.setItem("sth12", user.sth12);
+        localStorage.setItem("sth13", user.sth13);
+        localStorage.setItem("sth14", user.sth14);
+        localStorage.setItem("sth15", user.sth15);
+        localStorage.setItem("sth21", user.sth21);
+        localStorage.setItem("sth22", user.sth22);
+        localStorage.setItem("sth23", user.sth23);
+        localStorage.setItem("sth24", user.sth24);
+        localStorage.setItem("sth25", user.sth25);
+        localStorage.setItem("sth31", user.sth31);
+        localStorage.setItem("sth32", user.sth32);
+        localStorage.setItem("sth33", user.sth33);
+        localStorage.setItem("sth34", user.sth34);
+        localStorage.setItem("sth35", user.sth35);
+        localStorage.setItem("sth41", user.sth41);
+        localStorage.setItem("sth42", user.sth42);
+        localStorage.setItem("sth43", user.sth43);
+        localStorage.setItem("sth44", user.sth44);
+        localStorage.setItem("sth45", user.sth45);
+        localStorage.setItem("sth51", user.sth51);
+        localStorage.setItem("sth52", user.sth52);
+        localStorage.setItem("sth53", user.sth53);
+        localStorage.setItem("sth54", user.sth54);
+        localStorage.setItem("sth55", user.sth55);
         localStorage.setItem("profilePic", user.profilePic);
         window.location.href = user.url;
     } else {
