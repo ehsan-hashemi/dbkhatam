@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>چت روم حرفه‌ای</title>
+  <style>
+    @font-face {
+      font-family: 'Vazir';
+      src: url('/Vazir-Regular.ttf') format('truetype');
+    }
+    body {
+      font-family: 'Vazir', sans-serif;
+      direction: rtl;
+      display: flex;
+      margin: 0;
+      background: #222;
+      color: white;
+    }
+    .container {
+      display: flex;
+      width: 100vw;
+      height: 100vh;
+    }
+    /* sidebar */
+    .sidebar {
+      width: 25%;
+      background: #2a2a3a;
+      padding: 10px;
+      overflow-y: auto;
+    }
+    .chat-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .chat-item {
+      display: flex;
+      align-items: center;
+      padding: 10px;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: 0.3s;
+      background: #3a3a4a;
+      margin: 5px 0;
+      position: relative;
+    }
+    .chat-item:hover {
+      background: #4b4b5c;
+    }
+    .chat-image {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      margin-left: 10px;
+      object-fit: cover;
+    }
+    /* chat area */
+    .chat-area {
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      padding: 15px;
+      align-items: center;
+    }
+    .chat-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+    .chat-profile {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+    .chat-box {
+      flex-grow: 1;
+      width: 90%;
+      background: #29293f;
+      padding: 10px;
+      border-radius: 10px;
+      overflow-y: auto;
+      margin-bottom: 10px;
+    }
+    .input-area {
+      display: flex;
+      width: 90%;
+      gap: 5px;
+      margin-bottom: 10px;
+    }
+    #message-input {
+      flex-grow: 1;
+      padding: 8px;
+      border: none;
+      border-radius: 5px;
+      font-family: "Vazir";
+    }
+    button {
+      padding: 8px 12px;
+      cursor: pointer;
+      background: #4caf50;
+      border: none;
+      color: white;
+      border-radius: 5px;
+      font-family: "Vazir";
+    }
+    /* context menu */
+    .context-menu {
+      display: none;
+      position: absolute;
+      z-index: 1000;
+      background: #fff;
+      color: black;
+      border-radius: 5px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+    }
+    .context-menu ul {
+      list-style: none;
+      padding: 5px 0;
+      margin: 0;
+    }
+    .context-menu ul li {
+      padding: 8px 15px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    .context-menu ul li:hover {
+      background: #ddd;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <aside class="sidebar">
+      <h3>👥 لیست چت‌ها <button onclick="addChat()">➕</button></h3>
+      <ul id="chatList" class="chat-list"></ul>
+    </aside>
+    <main class="chat-area">
+      <div class="chat-header">
+        <img id="chatProfile" class="chat-profile" src="/images/person_24dp_1F1F1F_FILL0_wght400_GRAD0_opsz24.svg" alt="Profile">
+        <h2 id="chatTitle">انتخاب چت...</h2>
+      </div>
+      <div id="chat-box" class="chat-box"></div>
+      <div class="input-area">
+        <input type="text" id="message-input" placeholder="پیام خود را وارد کنید..." disabled>
+        <button id="send-button" onclick="sendMessage()" disabled>ارسال</button>
+      </div>
+    </main>
+  </div>
+
+  <div id="contextMenu" class="context-menu">
+    <ul>
+      <li onclick="renameChat()">✏️ تغییر نام</li>
+      <li onclick="changeProfile()">🖼 تغییر عکس پروفایل</li>
+      <li onclick="clearMessages()">🧹 حذف پیام‌ها</li>
+      <li onclick="deleteChat()">🗑 حذف مخاطب</li>
+      <li onclick="markAsRead()">✔️ خوانده شده</li>
+    </ul>
+  </div>
+
+  <script>
+    // دریافت چت‌ها از localStorage یا شروع با آرایه خالی
+    let chats = JSON.parse(localStorage.getItem("chats")) || [];
+    let selectedChat = null;
+
+    // به‌روز رسانی لیست چت‌ها
+    function updateChatList() {
+      const chatList = document.getElementById("chatList");
+      chatList.innerHTML = "";
+      chats.forEach((chat, index) => {
+        let li = document.createElement("li");
+        li.className = "chat-item";
+        li.innerHTML = `<img src="${chat.image || '/images/person_24dp_1F1F1F_FILL0_wght400_GRAD0_opsz24.svg'}" class="chat-image" alt="Profile">${chat.name}`;
+        li.onclick = function(e) {
+          selectChat(index);
+          e.stopPropagation();
+        };
+        li.addEventListener("contextmenu", function(e) {
+          e.preventDefault();
+          showContextMenu(e, index);
+        });
+        chatList.appendChild(li);
+      });
+      localStorage.setItem("chats", JSON.stringify(chats));
+    }
+
+    // افزودن مخاطب جدید
+    function addChat() {
+      const name = prompt("نام مخاطب جدید:");
+      if (name) {
+        chats.push({
+          name: name,
+          image: '/images/person_24dp_1F1F1F_FILL0_wght400_GRAD0_opsz24.svg',
+          messages: []
+        });
+        updateChatList();
+      }
+      const phone = prompt("شماره تلفن مخاطب جدید:")
+    }
+
+    // انتخاب یک مخاطب برای چت
+    function selectChat(index) {
+      selectedChat = index;
+      document.getElementById("chatTitle").innerText = chats[index].name;
+      document.getElementById("chatProfile").src = chats[index].image;
+      document.getElementById("message-input").disabled = false;
+      document.getElementById("send-button").disabled = false;
+      updateMessages();
+    }
+
+    // ارسال پیام – با دکمه یا فشردن دکمه اینتر
+    function sendMessage() {
+      const input = document.getElementById("message-input");
+      const message = input.value.trim();
+      if (message && selectedChat !== null) {
+        chats[selectedChat].messages.push(`🔹 شما: ${message}`);
+        updateMessages();
+        input.value = "";
+      }
+    }
+
+    // ارسال پیام با فشردن دکمه اینتر
+    document.getElementById("message-input").addEventListener("keydown", function(event) {
+      if (event.key === "Enter") {
+        event.preventDefault(); // جلوگیری از رفتن به خط بعدی
+        sendMessage();
+      }
+    });
+
+    // به‌روز رسانی پیام‌ها در قسمت چت
+    function updateMessages() {
+      const chatBox = document.getElementById("chat-box");
+      chatBox.innerHTML = "";
+      chats[selectedChat].messages.forEach(msg => {
+        const p = document.createElement("p");
+        p.textContent = msg;
+        chatBox.appendChild(p);
+      });
+      localStorage.setItem("chats", JSON.stringify(chats));
+    }
+
+    // نمایش منوی تنظیمات (راست‌کلیک)
+    function showContextMenu(event, index) {
+      selectedChat = index;
+      const menu = document.getElementById("contextMenu");
+      menu.style.top = event.clientY + "px";
+      menu.style.left = event.clientX + "px";
+      menu.style.display = "block";
+    }
+
+    // مخفی کردن منوی تنظیمات هنگام کلیک در صفحه
+    window.addEventListener("click", function() {
+      document.getElementById("contextMenu").style.display = "none";
+    });
+
+    // تغییر نام مخاطب
+    function renameChat() {
+      const newName = prompt("نام جدید:");
+      if (newName && selectedChat !== null) {
+        chats[selectedChat].name = newName;
+        updateChatList();
+        selectChat(selectedChat);
+      }
+    }
+
+    // حذف پیام‌ها
+    function clearMessages() {
+      if (selectedChat !== null) {
+        chats[selectedChat].messages = [];
+        updateMessages();
+      }
+    }
+
+    // حذف مخاطب
+    function deleteChat() {
+      if (selectedChat !== null && confirm("آیا مخاطب حذف شود؟")) {
+        chats.splice(selectedChat, 1);
+        selectedChat = null;
+        updateChatList();
+        document.getElementById("chatTitle").innerText = "انتخاب چت...";
+        document.getElementById("chatProfile").src = "/images/person_24dp_1F1F1F_FILL0_wght400_GRAD0_opsz24.svg";
+        document.getElementById("message-input").disabled = true;
+        document.getElementById("send-button").disabled = true;
+        document.getElementById("chat-box").innerHTML = "";
+      }
+    }
+
+    // تغییر عکس پروفایل از طریق انتخاب فایل از دستگاه
+    function changeProfile() {
+      if (selectedChat === null) return;
+      const fileInput = document.createElement("input");
+      fileInput.type = "file";
+      fileInput.accept = "image/*";
+      fileInput.onchange = function(event) {
+        const file = event.target.files[0];
+        if (file) {
+          const reader = new FileReader();
+          reader.onload = function(e) {
+            chats[selectedChat].image = e.target.result;
+            updateChatList();
+            selectChat(selectedChat);
+          };
+          reader.readAsDataURL(file);
+        }
+      };
+      fileInput.click();
+    }
+
+    // علامت گذاری پیام‌ها به عنوان خوانده شده (عملکرد نمونه)
+    function markAsRead() {
+      alert("پیام‌های این چت به عنوان خوانده شده علامت‌گذاری شدند.");
+    }
+
+    // راه‌اندازی اولیه لیست چت‌ها
+    updateChatList();
+  </script>
+</body>
+</html>
