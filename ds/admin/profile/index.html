@@ -164,6 +164,45 @@
             left: 0;
         }
 
+        table{
+            border: 1px solid black;
+            border-collapse: collapse;
+            width: 65%;
+            font-family: "Vazir";
+            margin: 20px;
+        }
+
+        table , th , td{
+            border: 3px solid black;
+            text-align: center;
+        }
+
+        th {
+            height: 50px;
+        }
+        
+        #content {
+            margin-left: 270px;
+            padding: 20px;
+            font-family: "Vazir";
+        }
+
+        #profile-name, #profile-teacher, #profile-grade, #profile-class, #profile-birthdate, #profile-nationalcode {
+            font-size: 18px;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        #profile-img {
+            display: block;
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            margin: 20px;
+            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+            text-align: right;
+        }
+
         /* فقط در موبایل دکمه منو نمایش داده شود */
         @media (max-width: 768px) {
             #burger {
@@ -184,6 +223,9 @@
                 width: 100%; /* محتوای صفحه به‌طور کامل نمایش داده شود */
                 padding: 0px;
             }
+            table {
+                width: 90%;
+            }
             .epaddeing {
                 padding-right: 10px;
             }
@@ -192,104 +234,53 @@
 </head>
 <body>
     <div id="navbar">
-        <h1>داشبورد دانش آموز</h1>
+        <h1>پروفایل</h1>
     </div>
 
     <button id="burger"><img src="/images/menu_24dp_1F1F1F_FILL0_wght400_GRAD0_opsz24.svg" alt="menu"></button>
     <div id="sidebar">
         <ul>
-            <li><a class="action" href="/test/admin/">خانه</a></li>
-            <li><a href="/test/admin/profile">پروفایل</a></li>
-            <li><a href="/test/admin/sss">مدیریت دانش‌آموزان</a></li>
-            <li><a href="/test/admin/teas">مدیریت معلمان</a></li>
-            <li><a href="/test/admin/shahrie">شهریه‌ها</a></li>
-            <li><a href="/test/admin/messages">پیام‌ها</a></li>
-            <li><a href="/test/admin/news">مدیریت اخبار</a></li>
-            <li><a class="dele" href="/test/login/">خروج</a></li>
+            <li><a href="/ds/admin/">خانه</a></li>
+            <li><a class="action" href="/ds/admin/profile">پروفایل</a></li>
+            <li><a href="/ds/admin/sss">مدیریت دانش‌آموزان</a></li>
+            <li><a href="/ds/admin/teas">مدیریت معلمان</a></li>
+            <li><a href="/ds/admin/shahrie">شهریه‌ها</a></li>
+            <li><a href="/ds/admin/messages">پیام‌ها</a></li>
+            <li><a href="/ds/admin/news">مدیریت اخبار</a></li>
+            <li><a class="dele" href="/ds/login/">خروج</a></li>
         </ul>
     </div>
 
+    <img id="profile-img" src="/images/person_24dp_1F1F1F_FILL0_wght400_GRAD0_opsz24.svg" alt="پروفایل">
     <div id="content">
-        <h2 class="epaddeing">مدیر محترم "<span id="username"></span>" خوش آمدید.</h2>
-        <p class="epaddeing">از منوی سمت چپ گزینه موردنظر را انتخاب کنید.</p>
-        <ul>
-            <li class="epaddeing">تعداد دانش آموزان: <span id="mashqe"></span> نفر</li>
-            <li class="epaddeing">تعداد معلمان: <span id="moalem"></span> نفر</li>
-            <li class="epaddeing">تعداد مدیران: <span id="admins"></span> نفر</li>
-            <li class="epaddeing">شهریه های پرداخت نشده: <span id="mecar"></span></li>
-            <li class="epaddeing">پیام جدید: <span id="mesagesee"></span> پیام</li>
-            <li class="epaddeing">تاریخ: <span id="datetime"></span></li>
-        </ul>
+        <h2 class="epaddeing">اطلاعات پروفایل</h2>
+        <p class="epaddeing" id="profile-name">نام مدیر</p>
+        <p class="epaddeing" id="profile-birthdate">تاریخ تولد</p>
+        <p class="epaddeing" id="profile-nationalcode">کد ملی</p>
+        <p class="epaddeing" id="profile-password">رمز عبور</p>
+        <p class="epaddeing" id="profile-class">سمت</p>
     </div>
-    <script src="../login/app.js"></script>
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            let username = localStorage.getItem("username"); // دریافت نام از localStorage
-            if (username) {
-                document.getElementById("username").textContent = username;
-            }
-        });
-    </script>
-    <script>
-        function updateMessage() {
-          const now = "hi";
-          document.getElementById("mashqe").textContent = "300";
-        }
 
-        updateMessage();
-    </script>
+<script>
+    document.getElementById("burger").addEventListener("click", function () {
+        let sidebar = document.getElementById("sidebar");
+        sidebar.classList.toggle("active");
+    });
+</script>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        let username = localStorage.getItem("username") || "نام وارد نشده";
+        let className = localStorage.getItem("className") || "کلاس وارد نشده";
+        let birthDate = localStorage.getItem("birthDate") || "تاریخ تولد وارد نشده";
+        let nationalCode = localStorage.getItem("nationalCode") || "کد ملی وارد نشده";
+        let pass = localStorage.getItem("pass") || "رمز عبور وارد نشده";
 
-    <script>
-        function updateMessage() {
-          const now = "hi";
-          document.getElementById("moalem").textContent = "10";
-        }
-
-        updateMessage();
-    </script>
-
-    <script>
-        function updateMessage() {
-          const now = "hi";
-          document.getElementById("admins").textContent = "2";
-        }
-
-        updateMessage();
-    </script>
-
-    <script>
-        function updateMessage() {
-          const now = "hi";
-          document.getElementById("mecar").textContent = "0";
-        }
-
-        updateMessage();
-    </script>
-
-    <script>
-        function updateMessage() {
-          const now = "hi";
-        document.getElementById("mesagesee").textContent = "0";
-        }
-
-        updateMessage();
-    </script>
-
-    <script>
-        function updateDateTime() {
-          const now = new Date();
-          now.setSeconds(now.getSeconds() + 1); // افزایش یک ثانیه
-          document.getElementById("datetime").textContent = now.toLocaleString();
-        }
-      
-        setInterval(updateDateTime, 1000); // اجرای تابع هر یک ثانیه
-        updateDateTime(); // نمایش مقدار اولیه
-      </script>
-    <script>
-        document.getElementById("burger").addEventListener("click", function () {
-            let sidebar = document.getElementById("sidebar");
-            sidebar.classList.toggle("active");
-        });
-    </script>
+        document.getElementById("profile-name").textContent = "نام و نام خانوادگی: " + username;
+        document.getElementById("profile-class").textContent = "سمت: " + className;
+        document.getElementById("profile-birthdate").textContent = "تاریخ تولد: " + birthDate;
+        document.getElementById("profile-nationalcode").textContent = "کد ملی: " + nationalCode;
+        document.getElementById("profile-password").textContent = "رمز عبور: " + pass
+    });
+</script>
 </body>
 </html>

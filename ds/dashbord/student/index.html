@@ -164,6 +164,23 @@
             left: 0;
         }
 
+        table{
+            border: 1px solid black;
+            border-collapse: collapse;
+            width: 70%;
+            font-family: "Vazir";
+            margin: 20px;
+        }
+
+        table , th , td{
+            border: 3px solid black;
+            text-align: center;
+        }
+
+        th {
+            height: 50px;
+        }
+
         /* فقط در موبایل دکمه منو نمایش داده شود */
         @media (max-width: 768px) {
             #burger {
@@ -180,7 +197,6 @@
                 padding-top: 15px;
             }
             #content {
-                margin-left: 0; /* حذف فاصله بین content و sidebar */
                 width: 100%; /* محتوای صفحه به‌طور کامل نمایش داده شود */
                 padding: 0px;
             }
@@ -192,34 +208,35 @@
 </head>
 <body>
     <div id="navbar">
-        <h1>داشبورد معلم</h1>
+        <h1>داشبورد دانش آموز</h1>
     </div>
 
     <button id="burger"><img src="/images/menu_24dp_1F1F1F_FILL0_wght400_GRAD0_opsz24.svg" alt="menu"></button>
     <div id="sidebar">
         <ul>
-            <li><a class="action" href="/test/dashbord/teacher/">خانه</a></li>
-            <li><a href="/test/dashbord/teacher/profile">پروفایل</a></li>
-            <li><a href="/test/dashbord/teacher/about">اطلاعات کلاس</a></li>
-            <li><a href="./schedule">برنامه کلاسی</a></li>
-            <li><a href="./grades">کارنامه ها</a></li>
-            <li><a href="./assignments">تکالیف</a></li>
-            <li><a href="./messages">پیام‌ها</a></li>
-            <li><a class="dele" href="/test/login/">خروج</a></li>
+            <li><a class="action" href="/ds/dashbord/student/">خانه</a></li>
+            <li><a href="/ds/dashbord/student/profile/">پروفایل</a></li>
+            <li><a href="/ds/dashbord/student/schedule">برنامه کلاسی</a></li>
+            <li><a href="/ds/dashbord/student/grades">کارنامه</a></li>
+            <li><a href="/ds/dashbord/student/assignments">تکالیف</a></li>
+            <li><a href="/ds/dashbord/student/messages">پیام‌ها</a></li>
+            <li><a href="/ds/dashbord/student/tuition">شهریه</a></li>
+            <li><a class="dele" href="/ds/login/">خروج</a></li>
         </ul>
     </div>
 
+
     <div id="content">
-        <h2 class="epaddeing">معلم گرامی "<span id="username"></span>" خوش آمدید.</h2>
+        <h2 class="epaddeing">دانش آموز عزیز "<span id="username"></span>" خوش آمدید.</h2>
         <p class="epaddeing">از منوی سمت چپ گزینه موردنظر را انتخاب کنید.</p>
         <ul>
             <li class="epaddeing">وضعیت تکالیف: <span id="mashqe"></span></li>
             <li class="epaddeing">پیام جدید: <span id="mesagesee"></span> پیام</li>
-            <li class="epaddeing">تعداد دانش آموزان: <span id="mecar"></span> نفر</li>
+            <li class="epaddeing">وضعیت کارنامه: <span id="mecar"></span></li>
             <li class="epaddeing">تاریخ: <span id="datetime"></span></li>
         </ul>
     </div>
-    <script src="../login/app.js"></script>
+    <script src="../../login/app.js"></script>
     <script>
         document.addEventListener("DOMContentLoaded", function() {
             let username = localStorage.getItem("username"); // دریافت نام از localStorage
@@ -227,6 +244,7 @@
                 document.getElementById("username").textContent = username;
             }
         });
+
     </script>
     <script>
         function updateMessage() {
@@ -249,7 +267,7 @@
     <script>
         function updateMessage() {
           const now = "hi";
-          document.getElementById("mecar").textContent = "35";
+          document.getElementById("mecar").textContent = "نوبت اول";
         }
 
         updateMessage();
@@ -265,7 +283,7 @@
         setInterval(updateDateTime, 1000); // اجرای تابع هر یک ثانیه
         updateDateTime(); // نمایش مقدار اولیه
       </script>
-      <script>
+    <script>
         document.getElementById("burger").addEventListener("click", function () {
             let sidebar = document.getElementById("sidebar");
             sidebar.classList.toggle("active");

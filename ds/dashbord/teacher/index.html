@@ -164,23 +164,6 @@
             left: 0;
         }
 
-        table{
-            border: 1px solid black;
-            border-collapse: collapse;
-            width: 65%;
-            font-family: "Vazir";
-            margin: 20px;
-        }
-
-        table , th , td{
-            border: 3px solid black;
-            text-align: center;
-        }
-
-        th {
-            height: 50px;
-        }
-        
         /* فقط در موبایل دکمه منو نمایش داده شود */
         @media (max-width: 768px) {
             #burger {
@@ -201,9 +184,6 @@
                 width: 100%; /* محتوای صفحه به‌طور کامل نمایش داده شود */
                 padding: 0px;
             }
-            table {
-                width: 90%;
-            }
             .epaddeing {
                 padding-right: 10px;
             }
@@ -212,91 +192,84 @@
 </head>
 <body>
     <div id="navbar">
-        <h1>برنامه کلاسی</h1>
+        <h1>داشبورد معلم</h1>
     </div>
 
     <button id="burger"><img src="/images/menu_24dp_1F1F1F_FILL0_wght400_GRAD0_opsz24.svg" alt="menu"></button>
     <div id="sidebar">
         <ul>
-            <li><a href="/test/dashbord/student/">خانه</a></li>
-            <li><a href="/test/dashbord/student/profile/">پروفایل</a></li>
-            <li><a class="action" href="/test/dashbord/student/schedule">برنامه کلاسی</a></li>
-            <li><a href="/test/dashbord/student/grades">کارنامه</a></li>
-            <li><a href="/test/dashbord/student/assignments">تکالیف</a></li>
-            <li><a href="/test/dashbord/student/messages">پیام‌ها</a></li>
-            <li><a href="/test/dashbord/student/tuition">شهریه</a></li>
-            <li><a class="dele" href="/test/login/">خروج</a></li>
+            <li><a class="action" href="/ds/dashbord/teacher/">خانه</a></li>
+            <li><a href="/ds/dashbord/teacher/profile">پروفایل</a></li>
+            <li><a href="/ds/dashbord/teacher/about">اطلاعات کلاس</a></li>
+            <li><a href="./schedule">برنامه کلاسی</a></li>
+            <li><a href="./grades">کارنامه ها</a></li>
+            <li><a href="./assignments">تکالیف</a></li>
+            <li><a href="./messages">پیام‌ها</a></li>
+            <li><a class="dele" href="/ds/login/">خروج</a></li>
         </ul>
     </div>
 
     <div id="content">
-        <h2 class="epaddeing">برنامه هفتگی کلاسی شما</h2>
-        <p class="epaddeing">معلم شما جدول زیر را وارد کرده است.</p>
+        <h2 class="epaddeing">معلم گرامی "<span id="username"></span>" خوش آمدید.</h2>
+        <p class="epaddeing">از منوی سمت چپ گزینه موردنظر را انتخاب کنید.</p>
+        <ul>
+            <li class="epaddeing">وضعیت تکالیف: <span id="mashqe"></span></li>
+            <li class="epaddeing">پیام جدید: <span id="mesagesee"></span> پیام</li>
+            <li class="epaddeing">تعداد دانش آموزان: <span id="mecar"></span> نفر</li>
+            <li class="epaddeing">تاریخ: <span id="datetime"></span></li>
+        </ul>
     </div>
-    <table class="epaddeing">
-        <tr>
-            <th>روز های هفته</th>
-            <th>زنگ اول</th>
-            <th>زنگ دوم</th>
-            <th>زنگ سوم</th>
-            <th>زنگ چهارم</th>
-            <th>زنگ پنجم</th>
-       </tr>
-       <tr>
-            <th>شنبه</td>
-            <td><p id="sth11s"></p></td>
-            <td id="sth12">تست</td>
-            <td>تست</td>
-            <td>تست</td>
-            <td>تست</td>
-       </tr>
-       <tr>
-            <th>یکشنبه</td>
-            <td>تست</td>
-            <td>تست</td>
-            <td>تست</td>
-            <td>تست</td>
-            <td>تست</td>
-      </tr>
-      <tr>
-            <th>دوشنبه</td>
-            <td>تست</td>
-            <td>تست</td>
-            <td>تست</td>
-            <td>تست</td>
-            <td>تست</td>
-      </tr>
-      <tr>
-            <th>سه شنبه</td>
-            <td>تست</td>
-            <td>تست</td>
-            <td>تست</td>
-            <td>تست</td>
-            <td>تست</td>
-      </tr>
-      <tr>
-            <th>چهارشنبه</td>
-            <td>تست</td>
-            <td>تست</td>
-            <td>تست</td>
-            <td>تست</td>
-            <td>تست</td>
-      </tr>
-</table>
+    <script src="../login/app.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            let username = localStorage.getItem("username"); // دریافت نام از localStorage
+            if (username) {
+                document.getElementById("username").textContent = username;
+            }
+        });
+    </script>
+    <script>
+        function updateMessage() {
+          const now = "hi";
+          document.getElementById("mashqe").textContent = "ارسال نشده";
+        }
 
-<script src="../../../login/app.js"></script>
-<script>
-    document.getElementById("burger").addEventListener("click", function () {
-        let sidebar = document.getElementById("sidebar");
-        sidebar.classList.toggle("active");
-    });
-</script>
-<script>
-    document.addEventListener("DOMContentLoaded", function() {
-        let sth11 = localStorage.getItem("sth11s") || "تست";
+        updateMessage();
+    </script>
 
-        document.getElementById("sth11").textContent = sth11s
-    });
-</script>
+    <script>
+        function updateMessage() {
+          const now = "hi";
+          document.getElementById("mesagesee").textContent = "0";
+        }
+
+        updateMessage();
+    </script>
+
+    <script>
+        function updateMessage() {
+          const now = "hi";
+          document.getElementById("mecar").textContent = "35";
+        }
+
+        updateMessage();
+    </script>
+
+    <script>
+        function updateDateTime() {
+          const now = new Date();
+          now.setSeconds(now.getSeconds() + 1); // افزایش یک ثانیه
+          document.getElementById("datetime").textContent = now.toLocaleString();
+        }
+      
+        setInterval(updateDateTime, 1000); // اجرای تابع هر یک ثانیه
+        updateDateTime(); // نمایش مقدار اولیه
+      </script>
+      <script>
+        document.getElementById("burger").addEventListener("click", function () {
+            let sidebar = document.getElementById("sidebar");
+            sidebar.classList.toggle("active");
+        });
+    </script>
 </body>
 </html>
